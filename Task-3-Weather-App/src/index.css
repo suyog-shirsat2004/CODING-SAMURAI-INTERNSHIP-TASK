@@ -345,6 +345,41 @@ body {
   opacity: 0.9;
 }
 
+.weather-emoji {
+  font-size: 6rem;
+  margin: 1rem 0;
+}
+
+.night-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #0c3547, #1a5276);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.forecast-emoji {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+.forecast-temp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.max-temp {
+  color: white;
+}
+
+.min-temp {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
 @media (max-width: 768px) {
   .weather-app {
     padding: 1rem;
