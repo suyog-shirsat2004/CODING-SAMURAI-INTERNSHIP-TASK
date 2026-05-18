@@ -9,10 +9,11 @@ This repository contains all the tasks and projects completed during my ReactJS 
 The projects included in this repository demonstrate my knowledge and skills in ReactJS, JavaScript, JSX, Components, Props, State Management, API Integration, and modern web development.
 
 ### Projects Included
-- Static Portfolio Website
-- Counter Application
-- Weather App
-- To-Do List App
+- Task 1: Static Portfolio Website
+- Task 2: Counter Application
+- Task 3: Weather App
+- Task 4: To-Do List App
+- Task 5: E-Commerce Website (Product listing, shopping cart, checkout flow)
 
 ### Technologies Used
 - ReactJS
@@ -20,6 +21,9 @@ The projects included in this repository demonstrate my knowledge and skills in 
 - HTML5
 - CSS3
 - Bootstrap
+- React Router
+- Context API
+- API Integration (FakeStoreAPI)
 - Git & GitHub
 
 ### Created By
