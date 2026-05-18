@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
@@ -9,6 +10,11 @@ function App() {
     <div className="app">
       <Header />
       <main>
+        <Hero 
+          name="Suyog Shirsat"
+          title="Full Stack Developer"
+          location="Nashik, Maharashtra"
+        />
         <About 
           name="Suyog Shirsat"
           fullName="Suyog Madhav Shirsat"
@@ -75,7 +81,12 @@ function App() {
           twitter="https://twitter.com/suyogshirsat"
         />
       </main>
-      <Footer />
+      <Footer 
+        github="https://github.com/suyogshirsat"
+        linkedin="https://linkedin.com/in/suyogshirsat"
+        twitter="https://twitter.com/suyogshirsat"
+        email="suyogshirsat2004@gmail.com"
+      />
     </div>
   )
 }
