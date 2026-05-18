@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 
-const API_KEY = import.meta.env.VITE_ACCUWEATHER_API_KEY || 'YOUR_ACCUWEATHER_API_KEY_HERE'
-const BASE_URL = 'http://dataservice.accuweather.com'
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY || 'YOUR_API_KEY_HERE'
+const BASE_URL = 'https://api.openweathermap.org/data/2.5'
 
 function App() {
   const [city, setCity] = useState('')
   const [weather, setWeather] = useState(null)
   const [forecast, setForecast] = useState(null)
-  const [locationKey, setLocationKey] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -26,91 +25,58 @@ function App() {
     }
   }, [weather])
 
-  const fetchLocationKey = async (cityName) => {
-    const response = await fetch(
-      `${BASE_URL}/locations/v1/cities/search?apikey=${API_KEY}&q=${cityName}`
-    )
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch location data.')
-    }
-
-    const data = await response.json()
-
-    if (data.length === 0) {
-      throw new Error('City not found. Please try again.')
-    }
-
-    return data[0]
-  }
-
-  const fetchCurrentWeather = async (key) => {
-    const response = await fetch(
-      `${BASE_URL}/currentconditions/v1/${key}?apikey=${API_KEY}&details=true`
-    )
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch weather data.')
-    }
-
-    return await response.json()
-  }
-
-  const fetchForecast = async (key) => {
-    const response = await fetch(
-      `${BASE_URL}/forecasts/v1/daily/5day/${key}?apikey=${API_KEY}&metric=true`
-    )
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch forecast data.')
-    }
-
-    return await response.json()
-  }
-
   const fetchWeather = async (cityName) => {
     setLoading(true)
     setError('')
     setWeather(null)
     setForecast(null)
-    setLocationKey('')
 
     try {
-      const location = await fetchLocationKey(cityName)
-      const key = location.Key
+      const weatherRes = await fetch(
+        `${BASE_URL}/weather?q=${cityName}&appid=${API_KEY}&units=metric`
+      )
 
-      const [currentData, forecastData] = await Promise.all([
-        fetchCurrentWeather(key),
-        fetchForecast(key)
-      ])
-
-      setLocationKey(key)
-
-      if (currentData.length === 0) {
-        throw new Error('Weather data not available for this location.')
+      if (!weatherRes.ok) {
+        const errorData = await weatherRes.json()
+        throw new Error(errorData.message === 'city not found' ? 'City not found. Please try again.' : 'Failed to fetch weather data.')
       }
 
-      const current = currentData[0]
+      const weatherData = await weatherRes.json()
+
+      const forecastRes = await fetch(
+        `${BASE_URL}/forecast?q=${cityName}&appid=${API_KEY}&units=metric`
+      )
+      const forecastData = await forecastRes.json()
 
       setWeather({
-        cityName: location.LocalizedName,
-        country: location.Country.LocalizedName,
-        temperature: current.Temperature.Metric.Value,
-        weatherText: current.WeatherText,
-        weatherIcon: current.WeatherIcon,
-        feelsLike: current.Temperature.Metric.RealFeelValue || current.Temperature.Metric.Value,
-        humidity: current.RelativeHumidity,
-        windSpeed: current.Wind.Speed.Metric.Value,
-        visibility: current.Visibility.Metric.Value,
-        uvIndex: current.UVIndex,
-        pressure: current.Pressure.Metric.Value,
-        hasPrecipitation: current.HasPrecipitation,
-        precipitationType: current.PrecipitationType,
-        isDayTime: current.IsDayTime,
-        iconPhrase: current.IconPhrase
+        cityName: weatherData.name,
+        country: weatherData.sys.country,
+        temperature: weatherData.main.temp,
+        weatherText: weatherData.weather[0].description,
+        weatherIcon: weatherData.weather[0].icon,
+        feelsLike: weatherData.main.feels_like,
+        humidity: weatherData.main.humidity,
+        windSpeed: weatherData.wind.speed,
+        visibility: weatherData.visibility / 1000,
+        pressure: weatherData.main.pressure,
+        tempMin: weatherData.main.temp_min,
+        tempMax: weatherData.main.temp_max,
+        sunrise: weatherData.sys.sunrise,
+        sunset: weatherData.sys.sunset,
+        isDayTime: Date.now() >= weatherData.sys.sunrise * 1000 && Date.now() <= weatherData.sys.sunset * 1000
       })
 
-      setForecast(forecastData.DailyForecasts)
+      const uniqueDays = []
+      const seenDates = new Set()
+      for (const item of forecastData.list) {
+        const date = new Date(item.dt * 1000).toDateString()
+        if (!seenDates.has(date)) {
+          seenDates.add(date)
+          uniqueDays.push(item)
+        }
+        if (uniqueDays.length === 5) break
+      }
+      setForecast(uniqueDays)
 
     } catch (err) {
       setError(err.message)
@@ -129,29 +95,34 @@ function App() {
   const getBackgroundClass = () => {
     if (!weather) return 'bg-default'
     const text = weather.weatherText.toLowerCase()
-    const iconPhrase = weather.iconPhrase.toLowerCase()
 
-    if (text.includes('clear') || text.includes('sunny') || iconPhrase.includes('clear') || iconPhrase.includes('sunny')) return 'bg-clear'
-    if (text.includes('cloud') || iconPhrase.includes('cloud')) return 'bg-clouds'
-    if (text.includes('rain') || text.includes('shower') || iconPhrase.includes('rain')) return 'bg-rain'
-    if (text.includes('thunder') || text.includes('storm') || iconPhrase.includes('thunder')) return 'bg-thunder'
-    if (text.includes('snow') || iconPhrase.includes('snow')) return 'bg-snow'
-    if (text.includes('fog') || text.includes('mist') || iconPhrase.includes('fog')) return 'bg-mist'
+    if (text.includes('clear') || text.includes('sunny')) return 'bg-clear'
+    if (text.includes('cloud')) return 'bg-clouds'
+    if (text.includes('rain') || text.includes('drizzle')) return 'bg-rain'
+    if (text.includes('thunder')) return 'bg-thunder'
+    if (text.includes('snow')) return 'bg-snow'
+    if (text.includes('mist') || text.includes('fog')) return 'bg-mist'
     return 'bg-default'
   }
 
   const getWeatherEmoji = () => {
     if (!weather) return '🌤'
     const text = weather.weatherText.toLowerCase()
-    const iconPhrase = weather.iconPhrase.toLowerCase()
-
     if (text.includes('clear') || text.includes('sunny')) return '☀️'
     if (text.includes('cloud')) return '☁️'
-    if (text.includes('rain') || text.includes('shower')) return '🌧️'
-    if (text.includes('thunder') || text.includes('storm')) return '⛈️'
+    if (text.includes('rain') || text.includes('drizzle')) return '🌧️'
+    if (text.includes('thunder')) return '⛈️'
     if (text.includes('snow')) return '🌨️'
-    if (text.includes('fog') || text.includes('mist')) return '🌫️'
+    if (text.includes('mist') || text.includes('fog')) return '🌫️'
     return '🌤️'
+  }
+
+  const formatTime = (timestamp) => {
+    return new Date(timestamp * 1000).toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    })
   }
 
   return (
@@ -159,7 +130,7 @@ function App() {
       <div className="weather-container">
         <header className="weather-header">
           <h1>Weather App</h1>
-          <p className="subtitle">Powered by AccuWeather API</p>
+          <p className="subtitle">Powered by OpenWeatherMap API</p>
         </header>
 
         <form className="search-form" onSubmit={handleSubmit}>
@@ -178,7 +149,7 @@ function App() {
         {loading && (
           <div className="loading">
             <div className="spinner"></div>
-            <p>Fetching weather data from AccuWeather...</p>
+            <p>Fetching weather data...</p>
           </div>
         )}
 
@@ -196,14 +167,13 @@ function App() {
                 <h2 className="city-name">{weather.cityName}, {weather.country}</h2>
                 <div className="weather-emoji">{getWeatherEmoji()}</div>
                 <div className="temperature">{Math.round(weather.temperature)}°C</div>
-                <p className="description">{weather.weatherText}</p>
-                {!weather.isDayTime && <span className="night-badge">🌙 Night Time</span>}
+                <p className="description">{weather.weatherText.charAt(0).toUpperCase() + weather.weatherText.slice(1)}</p>
               </div>
 
               <div className="weather-details">
                 <div className="detail-card">
                   <span className="detail-icon">🌡</span>
-                  <p className="detail-label">Real Feel</p>
+                  <p className="detail-label">Feels Like</p>
                   <p className="detail-value">{Math.round(weather.feelsLike)}°C</p>
                 </div>
                 <div className="detail-card">
@@ -214,22 +184,37 @@ function App() {
                 <div className="detail-card">
                   <span className="detail-icon">💨</span>
                   <p className="detail-label">Wind Speed</p>
-                  <p className="detail-value">{weather.windSpeed} km/h</p>
+                  <p className="detail-value">{weather.windSpeed} m/s</p>
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">👁</span>
                   <p className="detail-label">Visibility</p>
-                  <p className="detail-value">{weather.visibility} km</p>
+                  <p className="detail-value">{weather.visibility.toFixed(1)} km</p>
                 </div>
                 <div className="detail-card">
-                  <span className="detail-icon">☀</span>
-                  <p className="detail-label">UV Index</p>
-                  <p className="detail-value">{weather.uvIndex}</p>
+                  <span className="detail-icon">🔽</span>
+                  <p className="detail-label">Min Temp</p>
+                  <p className="detail-value">{Math.round(weather.tempMin)}°C</p>
+                </div>
+                <div className="detail-card">
+                  <span className="detail-icon">🔼</span>
+                  <p className="detail-label">Max Temp</p>
+                  <p className="detail-value">{Math.round(weather.tempMax)}°C</p>
                 </div>
                 <div className="detail-card">
                   <span className="detail-icon">🔵</span>
                   <p className="detail-label">Pressure</p>
-                  <p className="detail-value">{weather.pressure} mb</p>
+                  <p className="detail-value">{weather.pressure} hPa</p>
+                </div>
+                <div className="detail-card">
+                  <span className="detail-icon">🌅</span>
+                  <p className="detail-label">Sunrise</p>
+                  <p className="detail-value">{formatTime(weather.sunrise)}</p>
+                </div>
+                <div className="detail-card">
+                  <span className="detail-icon">🌇</span>
+                  <p className="detail-label">Sunset</p>
+                  <p className="detail-value">{formatTime(weather.sunset)}</p>
                 </div>
               </div>
             </div>
@@ -238,24 +223,20 @@ function App() {
               <div className="forecast-section">
                 <h3 className="forecast-title">5-Day Forecast</h3>
                 <div className="forecast-grid">
-                  {forecast.map((day, index) => (
-                    <div key={index} className="forecast-card">
-                      <p className="forecast-day">
-                        {new Date(day.Date).toLocaleDateString('en-US', { weekday: 'short' })}
-                      </p>
-                      <div className="forecast-emoji">
-                        {day.Day.IconPhrase.toLowerCase().includes('sun') || day.Day.IconPhrase.toLowerCase().includes('clear') ? '☀️' :
-                         day.Day.IconPhrase.toLowerCase().includes('cloud') ? '☁️' :
-                         day.Day.IconPhrase.toLowerCase().includes('rain') ? '🌧️' :
-                         day.Day.IconPhrase.toLowerCase().includes('snow') ? '🌨️' : '🌤️'}
+                  {forecast.map((day, index) => {
+                    const iconCode = day.weather[0].icon
+                    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+                    return (
+                      <div key={index} className="forecast-card">
+                        <p className="forecast-day">
+                          {new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })}
+                        </p>
+                        <img src={iconUrl} alt={day.weather[0].description} className="forecast-icon" />
+                        <p className="forecast-temp">{Math.round(day.main.temp)}°C</p>
+                        <p className="forecast-desc">{day.weather[0].main}</p>
                       </div>
-                      <p className="forecast-temp">
-                        <span className="max-temp">{Math.round(day.Temperature.Maximum.Value)}°</span>
-                        <span className="min-temp"> / {Math.round(day.Temperature.Minimum.Value)}°</span>
-                      </p>
-                      <p className="forecast-desc">{day.Day.ShortPhrase}</p>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
             )}
