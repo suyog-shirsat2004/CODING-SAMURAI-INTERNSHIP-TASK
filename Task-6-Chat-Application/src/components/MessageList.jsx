@@ -10,13 +10,13 @@ const MessageList = ({ messages, currentUserId, loading }) => {
 
   const formatTime = (timestamp) => {
     if (!timestamp) return '';
-    const date = timestamp.toDate();
+    const date = typeof timestamp.toDate === 'function' ? timestamp.toDate() : new Date(timestamp);
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   const formatDate = (timestamp) => {
     if (!timestamp) return '';
-    const date = timestamp.toDate();
+    const date = typeof timestamp.toDate === 'function' ? timestamp.toDate() : new Date(timestamp);
     const today = new Date();
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() - 1);
