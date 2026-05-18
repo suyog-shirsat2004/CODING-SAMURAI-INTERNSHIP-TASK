@@ -1,16 +1,63 @@
-# React + Vite
+# Counter Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ReactJS Internship Project - Coding Samurai
 
-Currently, two official plugins are available:
+This project is a simple Counter Application built using ReactJS.  
+The application allows users to increment, decrement, and reset the counter value using interactive buttons.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Increment Counter
+- Decrement Counter
+- Reset Counter
+- Responsive User Interface
+- Simple and Clean Design
 
-## React Compiler
+## Technologies Used
+- ReactJS
+- JavaScript
+- HTML5
+- CSS3
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## React Concepts Used
+- JSX
+- Functional Components
+- useState Hook
+- Event Handling
 
-## Expanding the ESLint configuration
+## Project Objective
+The objective of this project is to understand React state management using the useState hook and improve knowledge of React basics.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Folder Structure
+Counter-App
+│
+├── public
+├── src
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── package.json
+└── README.md
+
+## Installation
+
+Clone the repository:
+
+git clone https://github.com/suyog-shirsat2004/CODING-SAMURAI-INTERNSHIP-TASK.git
+
+Navigate to the project folder:
+
+cd Counter-App
+
+Install dependencies:
+
+npm install
+
+Run the application:
+
+npm start
+
+## Author
+Suyog Madhav Shirsat
+
+## Internship
+ReactJS Development Internship at Coding Samurai
