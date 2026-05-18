@@ -14,6 +14,7 @@ The projects included in this repository demonstrate my knowledge and skills in 
 - Task 3: Weather App
 - Task 4: To-Do List App
 - Task 5: E-Commerce Website (Product listing, shopping cart, checkout flow)
+- Task 6: Real-Time Chat Application (Firebase, real-time messaging, authentication)
 
 ### Technologies Used
 - ReactJS
@@ -24,6 +25,8 @@ The projects included in this repository demonstrate my knowledge and skills in 
 - React Router
 - Context API
 - API Integration (FakeStoreAPI)
+- Firebase (Authentication, Firestore)
+- WebSocket / Real-time updates
 - Git & GitHub
 
 ### Created By
