@@ -6,6 +6,7 @@ function Header() {
       <div className="container">
         <h1 className="logo">Portfolio</h1>
         <nav className="nav">
+          <a href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
