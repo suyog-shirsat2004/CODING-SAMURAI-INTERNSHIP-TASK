@@ -1,4 +1,5 @@
 import React from 'react'
+import profileImg from '../assets/image.jpg'
 
 function Hero({ name, title, location }) {
   return (
@@ -15,7 +16,7 @@ function Hero({ name, title, location }) {
           </div>
         </div>
         <div className="hero-image">
-          <img src="/image.jpg" alt={name} className="profile-img" />
+          <img src={profileImg} alt={name} className="profile-img" />
         </div>
       </div>
     </section>

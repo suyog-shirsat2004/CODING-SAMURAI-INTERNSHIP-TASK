@@ -5,10 +5,7 @@ A static portfolio website built with React as part of the Coding Samurai intern
 ## 🔗 Links
 
 - **Live App**: [suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/)
-- **GitHub Repository**: [github.com/suyog-shirsat2004/CODING-SAMURAI-INTERNSHIP-TASK](https://github.com/suyog-shirsat2004/CODING-SAMURAI-INTERNSHIP-TASK)
-- **LinkedIn**: [Suyog Shirsat](https://www.linkedin.com/in/suyog-shirsat-75a64622a/)
-- **Email**: [suyogshirsat2004@gmail.com](mailto:suyogshirsat2004@gmail.com)
-- **Twitter**: [@suyogshirsat2004](https://twitter.com/suyogshirsat2004)
+
 
 ## 🚀 Features
 
