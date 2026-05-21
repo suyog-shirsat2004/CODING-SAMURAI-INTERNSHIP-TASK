@@ -85,13 +85,13 @@ function App() {
       <main>
         <Hero 
           name="Suyog Shirsat"
-          title="Full Stack Developer"
+          title="MERN Stack Developer"
           location="Nashik, Maharashtra"
         />
         <About 
           name="Suyog Shirsat"
           fullName="Suyog Madhav Shirsat"
-          title="Full Stack Developer"
+          title="MERN Stack Developer"
           location="Nashik, Maharashtra"
           university="Savitribai Phule Pune University"
           description="I am a passionate and motivated Computer Science student pursuing my Bachelor of Computer Science (BCS) degree. I am deeply interested in Full Stack Web Development, Artificial Intelligence, Machine Learning, Cybersecurity, and modern software technologies. I enjoy creating responsive, user-friendly, and interactive web applications that solve real-world problems and improve user experience. I have knowledge of frontend technologies such as HTML, CSS, JavaScript, ReactJS, and Bootstrap, along with backend and programming languages including Python, C++, Java, and Node.js. I also have experience working with DBMS, RDBMS, GitHub, and software development tools. Throughout my academic journey, I have worked on projects related to AI-driven security systems, agriculture management systems, and web development applications. These projects helped me improve my problem-solving abilities, logical thinking, teamwork, and project management skills. I am always eager to learn new technologies, improve my development skills, and gain real-world industry experience. My goal is to become a skilled Full Stack Developer and contribute to innovative and impactful technology solutions."
