@@ -89,11 +89,11 @@ main {
 }
 
 .about .section-title {
-  color: white;
+  color: #0f766e;
 }
 
 .about .section-title::after {
-  background: #ffd700;
+  background: linear-gradient(90deg, #0d9488, #2dd4bf);
 }
 
 .projects .section-title {
@@ -109,8 +109,8 @@ main {
 }
 
 .about {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #ccfbf1 0%, #f0fdfa 50%, #ecfeff 100%);
+  color: #0f172a;
   padding: 5rem 0;
 }
 
@@ -123,30 +123,32 @@ main {
 .about-intro h3 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  color: #0f172a;
 }
 
 .about-intro .highlight {
-  color: #ffd700;
+  color: #0d9488;
 }
 
 .about-intro .title {
-  color: #e0e0e0;
+  color: #0f766e;
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
 .about-text {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8);
   padding: 2rem;
   border-radius: 12px;
   margin-bottom: 2rem;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.08);
+  border: 1px solid rgba(13, 148, 136, 0.1);
 }
 
 .about-text p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #f0f0f0;
+  color: #374151;
 }
 
 .about-details {
@@ -154,25 +156,26 @@ main {
 }
 
 .detail-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.8);
   padding: 1.5rem 2rem;
   border-radius: 10px;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.08);
+  border: 1px solid rgba(13, 148, 136, 0.1);
 }
 
 .detail-card h4 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
-  color: #ffd700;
+  color: #0d9488;
 }
 
 .detail-card p {
-  color: #e0e0e0;
+  color: #374151;
 }
 
 .detail-card .sub-text {
   font-size: 0.95rem;
-  color: #d0d0d0;
+  color: #6b7280;
   margin-top: 0.25rem;
 }
 
@@ -185,7 +188,7 @@ main {
 .hobbies-section h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #ffd700;
+  color: #0d9488;
 }
 
 .skills-grid,
@@ -197,33 +200,35 @@ main {
 }
 
 .skill-tag {
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #0d9488, #06b6d4);
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 25px;
   font-size: 0.95rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
   transition: all 0.3s;
 }
 
 .skill-tag:hover {
-  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.35);
 }
 
 .hobby-tag {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 25px;
   font-size: 0.95rem;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.25);
   transition: all 0.3s;
 }
 
 .hobby-tag:hover {
-  border-color: #ffd700;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 212, 191, 0.35);
 }
 
 .projects {
