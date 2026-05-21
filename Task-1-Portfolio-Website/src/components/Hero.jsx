@@ -15,9 +15,7 @@ function Hero({ name, title, location }) {
           </div>
         </div>
         <div className="hero-image">
-          <div className="profile-placeholder">
-            <span className="initials">{name.split(' ').map(n => n[0]).join('')}</span>
-          </div>
+          <img src="/image.jpg" alt={name} className="profile-img" />
         </div>
       </div>
     </section>
