@@ -2,6 +2,8 @@
 
 ## ReactJS Internship Project - Coding Samurai
 
+🔗 **Live Demo:** [https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/counter-app/](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/counter-app/)
+
 This project is a simple Counter Application built using ReactJS.  
 The application allows users to increment, decrement, and reset the counter value using interactive buttons.
 

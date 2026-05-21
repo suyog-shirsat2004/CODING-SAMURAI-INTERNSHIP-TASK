@@ -31,8 +31,20 @@ jobs:
           node-version: 20
           cache: 'npm'
           cache-dependency-path: ./Task-1-Portfolio-Website/package-lock.json
-      - run: npm ci
-      - run: npm run build
+      - name: Install & Build Portfolio
+        working-directory: ./Task-1-Portfolio-Website
+        run: |
+          npm ci
+          npm run build
+      - name: Install & Build Counter App
+        working-directory: ./Task-2-Counter-App
+        run: |
+          npm ci
+          NODE_ENV=production npm run build
+      - name: Combine builds
+        run: |
+          mkdir -p ./Task-1-Portfolio-Website/dist/counter-app
+          cp -r ./Task-2-Counter-App/dist/* ./Task-1-Portfolio-Website/dist/counter-app/
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
