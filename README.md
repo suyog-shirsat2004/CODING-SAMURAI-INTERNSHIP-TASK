@@ -35,3 +35,6 @@ BCS Student | Full Stack Developer | ReactJS Enthusiast
 
 ### GitHub Profile
 https://github.com/suyog-shirsat2004
+
+### **LinkedIn**: [Suyog Shirsat]
+https://www.linkedin.com/in/suyog-shirsat-75a64622a/
