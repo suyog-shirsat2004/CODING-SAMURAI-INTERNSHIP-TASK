@@ -5,6 +5,8 @@ on:
     branches: ['main']
     paths:
       - 'Task-1-Portfolio-Website/**'
+      - 'Task-2-Counter-App/**'
+      - '.github/workflows/deploy.yml'
 
 permissions:
   contents: read
@@ -43,8 +45,8 @@ jobs:
           NODE_ENV=production npm run build
       - name: Combine builds
         run: |
-          mkdir -p ./Task-1-Portfolio-Website/dist/counter-app
-          cp -r ./Task-2-Counter-App/dist/* ./Task-1-Portfolio-Website/dist/counter-app/
+          mkdir -p dist/counter-app
+          cp -r ../Task-2-Counter-App/dist/* dist/counter-app/
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
