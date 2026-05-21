@@ -1,7 +1,9 @@
 # Task 6: Real-Time Chat Application
 
 ## Description
-A real-time chat application built with React.js and Firebase. Features include user authentication (Google Sign-In and Anonymous), multiple chat rooms, and instant message updates using Firebase Firestore.
+A real-time chat application built with React.js and Firebase.
+
+🔗 **Live Demo:** [https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/chat-app/](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/chat-app/) Features include user authentication (Google Sign-In and Anonymous), multiple chat rooms, and instant message updates using Firebase Firestore.
 
 ## Features
 - **Authentication**: Google Sign-In and Anonymous/Guest login

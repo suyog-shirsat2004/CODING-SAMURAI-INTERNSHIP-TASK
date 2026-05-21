@@ -6,6 +6,9 @@ on:
     paths:
       - 'Task-1-Portfolio-Website/**'
       - 'Task-2-Counter-App/**'
+      - 'Task-3-Weather-App/**'
+      - 'Task-5-E-Commerce-Website/**'
+      - 'Task-6-Chat-Application/**'
       - '.github/workflows/deploy.yml'
 
 permissions:
@@ -43,10 +46,32 @@ jobs:
         run: |
           npm ci
           NODE_ENV=production npm run build
+      - name: Install & Build Weather App
+        working-directory: ./Task-3-Weather-App
+        run: |
+          npm ci
+          NODE_ENV=production npm run build
+      - name: Install & Build E-Commerce Website
+        working-directory: ./Task-5-E-Commerce-Website
+        run: |
+          npm ci
+          NODE_ENV=production npm run build
+      - name: Install & Build Chat Application
+        working-directory: ./Task-6-Chat-Application
+        run: |
+          npm ci
+          NODE_ENV=production npm run build
       - name: Combine builds
         run: |
           mkdir -p dist/counter-app
+          mkdir -p dist/weather-app
+          mkdir -p dist/e-commerce
+          mkdir -p dist/chat-app
           cp -r ../Task-2-Counter-App/dist/* dist/counter-app/
+          cp -r ../Task-3-Weather-App/dist/* dist/weather-app/
+          cp -r ../Task-5-E-Commerce-Website/dist/* dist/e-commerce/
+          cp -r ../Task-6-Chat-Application/dist/* dist/chat-app/
+          cp dist/e-commerce/index.html dist/e-commerce/404.html
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:

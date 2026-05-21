@@ -2,6 +2,8 @@
 
 A React weather application that fetches and displays weather data using the OpenWeatherMap API.
 
+🔗 **Live Demo:** [https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/weather-app/](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/weather-app/)
+
 ## Features
 
 - Search weather for any city worldwide
