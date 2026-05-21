@@ -1,19 +1,19 @@
 import React from 'react'
 
 const cardStyles = [
-  { bg: 'linear-gradient(135deg, #667eea, #764ba2)' },
-  { bg: 'linear-gradient(135deg, #f093fb, #f5576c)' },
-  { bg: 'linear-gradient(135deg, #4facfe, #00f2fe)' },
-  { bg: 'linear-gradient(135deg, #43e97b, #38f9d7)' },
-  { bg: 'linear-gradient(135deg, #fa709a, #fee140)' },
-  { bg: 'linear-gradient(135deg, #a18cd1, #fbc2eb)' },
+  { bg: 'linear-gradient(135deg, #e8d5f5, #f3e8ff)' },
+  { bg: 'linear-gradient(135deg, #fce4ec, #ffe0e6)' },
+  { bg: 'linear-gradient(135deg, #dbeafe, #e0f2fe)' },
+  { bg: 'linear-gradient(135deg, #d1fae5, #dcfce7)' },
+  { bg: 'linear-gradient(135deg, #fef3c7, #fef9c3)' },
+  { bg: 'linear-gradient(135deg, #f3e8ff, #ede9fe)' },
 ]
 
 function ProjectCard({ title, description, tech, style }) {
   return (
-    <div className="project-card" style={{ background: style.bg }}>
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <div className="project-card" style={{ background: style.bg, color: '#333' }}>
+      <h3 style={{ color: '#1a1a2e' }}>{title}</h3>
+      <p style={{ color: '#555' }}>{description}</p>
       <div className="tech-stack">
         {tech.map((item, index) => (
           <span key={index} className="tech-tag">{item}</span>
