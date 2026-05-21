@@ -76,15 +76,15 @@ function App() {
         <Contact 
           email="suyogshirsat2004@gmail.com"
           phone="+91 7719984503"
-          github="https://github.com/suyogshirsat"
-          linkedin="https://linkedin.com/in/suyogshirsat"
-          twitter="https://twitter.com/suyogshirsat"
+          github="https://github.com/suyog-shirsat2004/CODING-SAMURAI-INTERNSHIP-TASK"
+          linkedin="https://www.linkedin.com/in/suyog-shirsat-75a64622a/"
+          twitter="https://twitter.com/suyogshirsat2004"
         />
       </main>
       <Footer 
-        github="https://github.com/suyogshirsat"
-        linkedin="https://linkedin.com/in/suyogshirsat"
-        twitter="https://twitter.com/suyogshirsat"
+        github="https://github.com/suyog-shirsat2004/CODING-SAMURAI-INTERNSHIP-TASK"
+        linkedin="https://www.linkedin.com/in/suyog-shirsat-75a64622a/"
+        twitter="https://twitter.com/suyogshirsat2004"
         email="suyogshirsat2004@gmail.com"
       />
     </div>
