@@ -7,6 +7,7 @@ on:
       - 'Task-1-Portfolio-Website/**'
       - 'Task-2-Counter-App/**'
       - 'Task-3-Weather-App/**'
+      - 'Task-4-Todo-List/**'
       - 'Task-5-E-Commerce-Website/**'
       - 'Task-6-Chat-Application/**'
       - '.github/workflows/deploy.yml'
@@ -51,6 +52,11 @@ jobs:
         run: |
           npm ci
           NODE_ENV=production npm run build
+      - name: Install & Build Todo List
+        working-directory: ./Task-4-Todo-List
+        run: |
+          npm ci
+          NODE_ENV=production npm run build
       - name: Install & Build E-Commerce Website
         working-directory: ./Task-5-E-Commerce-Website
         run: |
@@ -65,10 +71,12 @@ jobs:
         run: |
           mkdir -p dist/counter-app
           mkdir -p dist/weather-app
+          mkdir -p dist/todo-list
           mkdir -p dist/e-commerce
           mkdir -p dist/chat-app
           cp -r ../Task-2-Counter-App/dist/* dist/counter-app/
           cp -r ../Task-3-Weather-App/dist/* dist/weather-app/
+          cp -r ../Task-4-Todo-List/dist/* dist/todo-list/
           cp -r ../Task-5-E-Commerce-Website/dist/* dist/e-commerce/
           cp -r ../Task-6-Chat-Application/dist/* dist/chat-app/
           cp dist/e-commerce/index.html dist/e-commerce/404.html
