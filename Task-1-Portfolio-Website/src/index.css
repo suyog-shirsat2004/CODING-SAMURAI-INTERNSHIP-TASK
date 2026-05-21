@@ -357,19 +357,20 @@ main {
 .btn-submit {
   width: 100%;
   padding: 0.9rem;
-  background: linear-gradient(135deg, #0d9488, #06b6d4);
-  color: white;
-  border: none;
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  color: #0f766e;
+  border: 2px solid #5eead4;
   border-radius: 8px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(13, 148, 136, 0.4);
+  box-shadow: 0 5px 20px rgba(13, 148, 136, 0.2);
+  background: linear-gradient(135deg, #99f6e4, #5eead4);
 }
 
 .success-popup {

@@ -72,7 +72,7 @@ function Contact({ email, phone, github, linkedin, twitter }) {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-submit">Submit</button>
+            <button type="submit" className="btn btn-submit">Send Message</button>
           </form>
 
           <div className="social-links">
