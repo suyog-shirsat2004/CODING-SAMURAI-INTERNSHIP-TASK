@@ -13,7 +13,7 @@ The projects included in this repository demonstrate my knowledge and skills in 
 - Task 2: **Counter Application** — [Live Demo](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/counter-app/)
 - Task 3: **Weather App** — [Live Demo](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/weather-app/)
 - Task 4: **To-Do List App** — [Live Demo](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/todo-list/)
-- Task 5: **E-Commerce Website** (Product listing, shopping cart, checkout flow) — [Live Demo](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/e-commerce/)
+- Task 5: **E-Commerce Website** (Product listing, shopping cart, checkout flow) — [Live Demo](https://suyog-shirsat2004.github.io/)
 - Task 6: **Real-Time Chat Application** (Firebase, real-time messaging, authentication) — [Live Demo](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/chat-app/)
 
 ### Technologies Used
