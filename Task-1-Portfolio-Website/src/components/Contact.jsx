@@ -78,7 +78,7 @@ function Contact({ email, phone, github, linkedin, twitter }) {
           <div className="social-links">
             <a href={github} target="_blank" rel="noopener noreferrer" className="social-btn github">GitHub</a>
             <a href={linkedin} target="_blank" rel="noopener noreferrer" className="social-btn linkedin">LinkedIn</a>
-            <a href={twitter} target="_blank" rel="noopener noreferrer" className="social-btn twitter">Twitter</a>
+
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ function Footer({ github, linkedin, twitter, email }) {
             <a href={`mailto:${email}`}>Email</a>
             <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href={twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
+
           </div>
           <p className="copyright">&copy; {new Date().getFullYear()} Suyog Shirsat. All rights reserved.</p>
         </div>
