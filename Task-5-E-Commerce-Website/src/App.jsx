@@ -13,7 +13,7 @@ import './styles/App.css';
 function App() {
   return (
     <CartProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <div className="app">
           <Navbar />
           <main>
