@@ -9,9 +9,9 @@ const cardStyles = [
   { bg: 'linear-gradient(135deg, #f3e8ff, #ede9fe)' },
 ]
 
-function ProjectCard({ title, description, tech, style }) {
+function ProjectCard({ title, description, tech, style, onClick }) {
   return (
-    <div className="project-card" style={{ background: style.bg, color: '#333' }}>
+    <div className="project-card" style={{ background: style.bg, color: '#333' }} onClick={onClick}>
       <h3 style={{ color: '#1a1a2e' }}>{title}</h3>
       <p style={{ color: '#555' }}>{description}</p>
       <div className="tech-stack">
@@ -19,11 +19,12 @@ function ProjectCard({ title, description, tech, style }) {
           <span key={index} className="tech-tag">{item}</span>
         ))}
       </div>
+      <span className="project-view-btn">View Details &rarr;</span>
     </div>
   )
 }
 
-function Projects({ projects }) {
+function Projects({ projects, onSelect }) {
   return (
     <section id="projects" className="section projects">
       <div className="container">
@@ -36,6 +37,7 @@ function Projects({ projects }) {
               description={project.description}
               tech={project.tech}
               style={cardStyles[index % cardStyles.length]}
+              onClick={() => onSelect(project)}
             />
           ))}
         </div>

@@ -1,11 +1,84 @@
+import { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
+import ProjectDetail from './components/ProjectDetail'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
+const projects = [
+  {
+    id: 1,
+    title: 'AI Art Gallery',
+    description: 'An interactive gallery showcasing AI-generated artwork with dynamic filtering and immersive 3D viewer.',
+    tech: ['React', 'Three.js', 'TensorFlow'],
+    highlights: [
+      'AI-generated artwork with style transfer',
+      'Immersive 3D gallery viewer',
+      'Dynamic filtering and search',
+    ],
+  },
+  {
+    id: 2,
+    title: 'Music Visualizer',
+    description: 'Real-time audio visualization that transforms music into mesmerizing animated graphics and patterns.',
+    tech: ['React', 'Web Audio API', 'Canvas'],
+    highlights: [
+      'Real-time audio frequency analysis',
+      'Multiple visualization modes',
+      'Responsive animated graphics',
+    ],
+  },
+  {
+    id: 3,
+    title: 'Space Explorer',
+    description: 'Interactive 3D solar system experience with real-time planetary data and astronaut tracking.',
+    tech: ['React', 'Three.js', 'NASA API'],
+    highlights: [
+      'Real-time planetary orbit simulation',
+      'Live NASA data integration',
+      'Interactive 3D space navigation',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Code Playground',
+    description: 'Live code editor with instant preview supporting multiple languages and collaborative editing.',
+    tech: ['React', 'Monaco Editor', 'WebSocket'],
+    highlights: [
+      'Multi-language code editing',
+      'Real-time collaborative editing',
+      'Instant live preview',
+    ],
+  },
+  {
+    id: 5,
+    title: 'Fitness Tracker',
+    description: 'Personal fitness dashboard with workout analytics, progress charts, and AI-powered recommendations.',
+    tech: ['React', 'D3.js', 'Node.js'],
+    highlights: [
+      'Interactive workout analytics charts',
+      'AI-powered fitness recommendations',
+      'Progress tracking with visualizations',
+    ],
+  },
+  {
+    id: 6,
+    title: 'Recipe Generator',
+    description: 'Smart recipe app that creates meal plans based on dietary preferences and available ingredients.',
+    tech: ['React', 'AI API', 'Firebase'],
+    highlights: [
+      'AI-powered recipe generation',
+      'Dietary preference filtering',
+      'Real-time ingredient matching',
+    ],
+  },
+]
+
 function App() {
+  const [selectedProject, setSelectedProject] = useState(null)
+
   return (
     <div className="app">
       <Header />
@@ -33,46 +106,7 @@ function App() {
             "Exploring Tech Innovations"
           ]}
         />
-        <Projects 
-          projects={[
-            {
-              id: 1,
-              title: "AI Art Gallery",
-              description: "An interactive gallery showcasing AI-generated artwork with dynamic filtering and immersive 3D viewer.",
-              tech: ["React", "Three.js", "TensorFlow"]
-            },
-            {
-              id: 2,
-              title: "Music Visualizer",
-              description: "Real-time audio visualization that transforms music into mesmerizing animated graphics and patterns.",
-              tech: ["React", "Web Audio API", "Canvas"]
-            },
-            {
-              id: 3,
-              title: "Space Explorer",
-              description: "Interactive 3D solar system experience with real-time planetary data and astronaut tracking.",
-              tech: ["React", "Three.js", "NASA API"]
-            },
-            {
-              id: 4,
-              title: "Code Playground",
-              description: "Live code editor with instant preview supporting multiple languages and collaborative editing.",
-              tech: ["React", "Monaco Editor", "WebSocket"]
-            },
-            {
-              id: 5,
-              title: "Fitness Tracker",
-              description: "Personal fitness dashboard with workout analytics, progress charts, and AI-powered recommendations.",
-              tech: ["React", "D3.js", "Node.js"]
-            },
-            {
-              id: 6,
-              title: "Recipe Generator",
-              description: "Smart recipe app that creates meal plans based on dietary preferences and available ingredients.",
-              tech: ["React", "AI API", "Firebase"]
-            }
-          ]}
-        />
+        <Projects projects={projects} onSelect={setSelectedProject} />
         <Contact 
           email="suyogshirsat2004@gmail.com"
           phone="+91 7719984503"
@@ -87,6 +121,12 @@ function App() {
         twitter="https://twitter.com/suyogshirsat2004"
         email="suyogshirsat2004@gmail.com"
       />
+      {selectedProject && (
+        <ProjectDetail
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </div>
   )
 }
