@@ -432,44 +432,49 @@ main {
 }
 
 .social-btn {
-  color: #0f766e;
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   transition: all 0.3s;
   text-decoration: none;
   min-width: 120px;
-  border: 2px solid #5eead4;
+  border: 2px solid;
 }
 
 .social-btn.github {
-  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  color: #c2185b;
+  border-color: #f48fb1;
 }
 
 .social-btn.github:hover {
-  background: linear-gradient(135deg, #99f6e4, #5eead4);
+  background: linear-gradient(135deg, #f8bbd0, #f48fb1);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(13, 148, 136, 0.2);
+  box-shadow: 0 5px 15px rgba(194, 24, 91, 0.2);
 }
 
 .social-btn.linkedin {
-  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  color: #1565c0;
+  border-color: #64b5f6;
 }
 
 .social-btn.linkedin:hover {
-  background: linear-gradient(135deg, #99f6e4, #5eead4);
+  background: linear-gradient(135deg, #bbdefb, #64b5f6);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(13, 148, 136, 0.2);
+  box-shadow: 0 5px 15px rgba(21, 101, 192, 0.2);
 }
 
 .social-btn.twitter {
-  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  color: #2e7d32;
+  border-color: #81c784;
 }
 
 .social-btn.twitter:hover {
-  background: linear-gradient(135deg, #99f6e4, #5eead4);
+  background: linear-gradient(135deg, #c8e6c9, #81c784);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(13, 148, 136, 0.2);
+  box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
 }
 
 .footer {
