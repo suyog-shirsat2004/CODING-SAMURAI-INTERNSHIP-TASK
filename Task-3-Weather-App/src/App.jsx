@@ -135,7 +135,7 @@ function App() {
       <div className="weather-container">
         <header className="weather-header">
           <h1>Weather App</h1>
-          <p className="subtitle">Real-time weather data worldwide</p>
+          <p className="subtitle">Real-time weather data worldwide — powered by wttr.in</p>
         </header>
 
         <form className="search-form" onSubmit={handleSubmit}>
