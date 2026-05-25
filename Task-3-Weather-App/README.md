@@ -1,6 +1,6 @@
 # Weather App
 
-A React weather application that fetches and displays weather data using the OpenWeatherMap API.
+A React weather application that fetches and displays real-time weather data using the wttr.in API.
 
 🔗 **Live Demo:** [https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/weather-app/](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/weather-app/)
 
@@ -8,7 +8,7 @@ A React weather application that fetches and displays weather data using the Ope
 
 - Search weather for any city worldwide
 - Current weather details (temperature, humidity, wind speed, pressure, visibility, etc.)
-- 5-day weather forecast
+- 3-day weather forecast
 - Sunrise and sunset times
 - Dynamic backgrounds based on weather conditions
 - Responsive design for all devices
