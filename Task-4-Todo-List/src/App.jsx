@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react'
 
 function TodoApp() {
   const [todos, setTodos] = useState(() => {
@@ -62,6 +61,12 @@ function TodoApp() {
 
   const clearCompleted = () => {
     setTodos(todos.filter(todo => !todo.completed))
+  }
+
+  const deleteAll = () => {
+    if (todos.length > 0 && window.confirm('Delete all tasks?')) {
+      setTodos([])
+    }
   }
 
   const filteredTodos = todos.filter(todo => {
@@ -130,9 +135,18 @@ function TodoApp() {
           </button>
         </div>
 
-        {todos.length > 0 && filteredTodos.length === 0 && (
+        {todos.length === 0 ? (
           <div className="empty-state">
-            <p>No {filter} tasks</p>
+            <div className="empty-icon">📋</div>
+            <p className="empty-title">No tasks yet</p>
+            <p className="empty-subtitle">Add a task to get started</p>
+          </div>
+        ) : filteredTodos.length === 0 && (
+          <div className="empty-state">
+            <p className="empty-title">No {filter} tasks</p>
+            <p className="empty-subtitle">
+              {filter === 'active' ? 'All tasks are completed!' : filter === 'completed' ? 'No completed tasks yet' : ''}
+            </p>
           </div>
         )}
 
@@ -200,11 +214,18 @@ function TodoApp() {
           ))}
         </ul>
 
-        {completedCount > 0 && (
-          <button className="clear-btn" onClick={clearCompleted}>
-            Clear Completed ({completedCount})
-          </button>
-        )}
+        <div className="action-bar">
+          {completedCount > 0 && (
+            <button className="clear-btn" onClick={clearCompleted}>
+              Clear Completed ({completedCount})
+            </button>
+          )}
+          {todos.length > 0 && (
+            <button className="delete-all-btn" onClick={deleteAll}>
+              Delete All
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

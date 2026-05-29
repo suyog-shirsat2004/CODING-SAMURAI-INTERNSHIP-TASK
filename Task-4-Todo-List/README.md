@@ -15,6 +15,9 @@ A React todo list application with full CRUD (Create, Read, Update, Delete) func
 - **Statistics** - Track active, completed, and total tasks
 - **Persistence** - Tasks saved to localStorage
 - **Clear Completed** - Bulk remove completed tasks
+- **Delete All** - Remove all tasks with confirmation
+- **Animated UI** - Smooth slide-in animations for tasks
+- **Smart Empty States** - Context-aware messages when no tasks exist
 - **Responsive** - Works on all screen sizes
 
 ## Skills Demonstrated
@@ -52,7 +55,6 @@ Task-4-Todo-List/
 ├── src/
 │   ├── App.jsx         # Main component with CRUD logic
 │   ├── index.css       # All styling
-│   ├── App.css         # Empty (styles in index.css)
 │   └── main.jsx        # React entry point
 ├── index.html
 └── package.json

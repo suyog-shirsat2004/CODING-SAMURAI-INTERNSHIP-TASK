@@ -154,6 +154,17 @@ body {
   margin-bottom: 1.5rem;
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .todo-item {
   background: #f8f9fa;
   border-radius: 12px;
@@ -164,6 +175,7 @@ body {
   align-items: center;
   transition: all 0.3s;
   border: 2px solid transparent;
+  animation: slideIn 0.3s ease-out;
 }
 
 .todo-item:hover {
@@ -299,8 +311,55 @@ body {
   background: #7f8c8d;
 }
 
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #7f8c8d;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.empty-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #95a5a6;
+  margin-bottom: 0.5rem;
+}
+
+.empty-subtitle {
+  font-size: 0.95rem;
+  color: #bdc3c7;
+}
+
+.action-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0;
+}
+
 .clear-btn {
-  width: 100%;
+  flex: 1;
+  padding: 0.75rem;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.clear-btn:hover {
+  background: #229954;
+  transform: translateY(-2px);
+}
+
+.delete-all-btn {
+  flex: 1;
   padding: 0.75rem;
   background: #e74c3c;
   color: white;
@@ -312,16 +371,9 @@ body {
   transition: all 0.3s;
 }
 
-.clear-btn:hover {
+.delete-all-btn:hover {
   background: #c0392b;
   transform: translateY(-2px);
-}
-
-.empty-state {
-  text-align: center;
-  padding: 2rem;
-  color: #7f8c8d;
-  font-size: 1.1rem;
 }
 
 @media (max-width: 600px) {
