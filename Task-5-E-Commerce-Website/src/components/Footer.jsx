@@ -19,8 +19,8 @@ const Footer = () => {
           </div>
           <div className="col-md-4">
             <h4 className="h6">Contact Us</h4>
-            <p className="text-secondary mb-1">Email: support@shopmart.com</p>
-            <p className="text-secondary">Phone: +1 (555) 123-4567</p>
+            <p className="text-secondary mb-1">Email: suyogmarket2004@gmail.com</p>
+            <p className="text-secondary">Phone: 7719984503</p>
           </div>
         </div>
         <div className="text-center text-secondary pt-3 mt-4 border-top border-secondary">
