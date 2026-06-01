@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import TiltImage from '../components/TiltImage';
 import { toINR } from '../services/productService';
 
 const cartBgColors = [
@@ -38,7 +39,7 @@ const Cart = () => {
                 <div className="row align-items-center g-3">
                   <div className="col-auto">
                     <Link to={`/product/${item.id}`} className={`d-block ${cartBgColors[item.id % cartBgColors.length]} rounded p-2`} style={{width: '100px', height: '100px'}}>
-                      <img src={item.image} alt={item.title} className="w-100 h-100" style={{objectFit: 'contain'}} />
+                      <TiltImage src={item.image} alt={item.title} containerStyle={{width: '100%', height: '100%'}} />
                     </Link>
                   </div>
 

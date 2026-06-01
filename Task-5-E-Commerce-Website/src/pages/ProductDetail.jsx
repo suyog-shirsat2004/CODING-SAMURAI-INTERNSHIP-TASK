@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Loading from '../components/Loading';
+import TiltImage from '../components/TiltImage';
 import { fetchProductById, toINR } from '../services/productService';
 
 const detailBgColors = [
@@ -71,7 +72,7 @@ const ProductDetail = () => {
       <div className="row g-4 bg-light rounded-4 shadow-sm p-4">
         <div className="col-md-6">
           <div className={`${detailBgColors[product.id % detailBgColors.length]} d-flex align-items-center justify-content-center p-4 rounded-3`} style={{minHeight: '400px'}}>
-            <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '400px', objectFit: 'contain'}} />
+            <TiltImage src={product.image} alt={product.title} containerStyle={{width: '100%', height: '100%', maxHeight: '400px'}} />
           </div>
         </div>
 

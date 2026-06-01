@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { toINR } from '../services/productService';
+import TiltImage from './TiltImage';
 
 const bgColors = [
   'bg-light',
@@ -30,10 +31,10 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="card shadow-sm h-100">
+    <div className="card shadow-sm h-100 product-card-3d">
       <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
         <div className={`${bgClass} d-flex align-items-center justify-content-center p-4`} style={{height: '200px'}}>
-          <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '100%', objectFit: 'contain'}} />
+          <TiltImage src={product.image} alt={product.title} containerStyle={{width: '100%', height: '100%'}} />
         </div>
         <div className="card-body d-flex flex-column">
           <h3 className="card-title fs-6 fw-normal" style={{
