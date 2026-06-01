@@ -4,14 +4,14 @@ import { toINR } from '../services/productService';
 import TiltImage from './TiltImage';
 
 const bgColors = [
-  'bg-light',
-  'bg-info bg-opacity-10',
-  'bg-warning bg-opacity-10',
-  'bg-success bg-opacity-10',
-  'bg-danger bg-opacity-10',
-  'bg-primary bg-opacity-10',
-  'bg-secondary bg-opacity-10',
-  'bg-dark bg-opacity-10'
+  'bg-soft-1',
+  'bg-soft-2',
+  'bg-soft-3',
+  'bg-soft-4',
+  'bg-soft-5',
+  'bg-soft-6',
+  'bg-soft-7',
+  'bg-soft-8'
 ];
 
 const ProductCard = ({ product }) => {

@@ -2,18 +2,18 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Loading from '../components/Loading';
-import TiltImage from '../components/TiltImage';
+import ProductViewer360 from '../components/ProductViewer360';
 import { fetchProductById, toINR } from '../services/productService';
 
 const detailBgColors = [
-  'bg-light',
-  'bg-info bg-opacity-10',
-  'bg-warning bg-opacity-10',
-  'bg-success bg-opacity-10',
-  'bg-danger bg-opacity-10',
-  'bg-primary bg-opacity-10',
-  'bg-secondary bg-opacity-10',
-  'bg-dark bg-opacity-10'
+  'bg-soft-1',
+  'bg-soft-2',
+  'bg-soft-3',
+  'bg-soft-4',
+  'bg-soft-5',
+  'bg-soft-6',
+  'bg-soft-7',
+  'bg-soft-8'
 ];
 
 const ProductDetail = () => {
@@ -69,10 +69,10 @@ const ProductDetail = () => {
     <div className="mx-auto animate-page" style={{maxWidth: '1000px'}}>
       <Link to="/products" className="text-primary text-decoration-none fw-medium d-inline-block mb-3">← Back to Products</Link>
 
-      <div className="row g-4 bg-light rounded-4 shadow-sm p-4">
+      <div className="row g-4 bg-soft-1 rounded-4 shadow-sm p-4">
         <div className="col-md-6">
-          <div className={`${detailBgColors[product.id % detailBgColors.length]} d-flex align-items-center justify-content-center p-4 rounded-3`} style={{minHeight: '400px'}}>
-            <TiltImage src={product.image} alt={product.title} containerStyle={{width: '100%', height: '100%', maxHeight: '400px'}} />
+          <div className={`${detailBgColors[product.id % detailBgColors.length]} d-flex align-items-center justify-content-center p-3 rounded-3`} style={{minHeight: '400px'}}>
+            <ProductViewer360 src={product.image} alt={product.title} />
           </div>
         </div>
 
@@ -108,4 +108,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-

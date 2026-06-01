@@ -58,7 +58,7 @@
 .cart-item-image {
   width: 100px;
   height: 100px;
-  background: white;
+  background: var(--card-bg);
   border-radius: 0.5rem;
   padding: 0.5rem;
   display: flex;
