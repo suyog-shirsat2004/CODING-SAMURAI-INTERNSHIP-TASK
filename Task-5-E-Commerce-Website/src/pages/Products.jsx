@@ -79,7 +79,7 @@ const Products = () => {
     <div>
       <h1 className="fs-1 text-center mb-4">All Products</h1>
 
-      <div className="d-flex flex-wrap gap-3 mb-4 p-3 bg-white rounded-3 shadow-sm">
+      <div className="d-flex flex-wrap gap-3 mb-4 p-3 bg-light rounded-3 shadow-sm">
         <div className="flex-fill" style={{minWidth: '200px'}}>
           <input
             type="text"

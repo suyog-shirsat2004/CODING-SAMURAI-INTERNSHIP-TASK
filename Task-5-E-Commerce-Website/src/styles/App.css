@@ -48,13 +48,13 @@ body {
   background-color: var(--primary-color) !important;
 }
 
-.navbar-brand {
-  color: var(--primary-color) !important;
+.navbar-dark .navbar-brand:hover {
+  color: rgba(255, 255, 255, 0.85);
 }
 
-a.text-primary:hover,
-.nav-link.active {
-  color: var(--primary-hover) !important;
+.navbar-dark .nav-link.active {
+  color: #fff !important;
+  font-weight: 600;
 }
 
 a:focus,
