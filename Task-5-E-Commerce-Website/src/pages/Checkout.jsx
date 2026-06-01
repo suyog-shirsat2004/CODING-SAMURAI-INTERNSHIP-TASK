@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { toINR } from '../services/productService';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -126,6 +127,7 @@ const Checkout = () => {
 
   const shipping = getCartTotal() > 50 ? 0 : 5;
   const total = getCartTotal() + shipping;
+  const shippingINR = shipping === 0 ? 0 : 500;
 
   return (
     <div className="mx-auto" style={{maxWidth: '1200px'}}>
@@ -235,26 +237,26 @@ const Checkout = () => {
               {items.map(item => (
                 <div key={item.id} className="d-flex justify-content-between py-2 border-bottom" style={{fontSize: '0.9rem'}}>
                   <span className="text-truncate me-2">{item.title} x {item.quantity}</span>
-                  <span className="text-nowrap">₹{(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="text-nowrap">₹{toINR(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
 
             <div className="d-flex justify-content-between mb-2">
               <span>Subtotal</span>
-              <span>₹{getCartTotal().toFixed(2)}</span>
+              <span>₹{toINR(getCartTotal()).toFixed(2)}</span>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>Shipping</span>
-              <span>{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
+              <span>{shipping === 0 ? 'Free' : `₹${shippingINR.toFixed(2)}`}</span>
             </div>
             <div className="d-flex justify-content-between fs-5 fw-bold pt-3 border-top mt-2 mb-3">
               <span>Total</span>
-              <span>₹{total.toFixed(2)}</span>
+              <span>₹{toINR(total).toFixed(2)}</span>
             </div>
 
             <button type="submit" className="btn btn-success btn-lg w-100 fw-semibold" disabled={isSubmitting}>
-              {isSubmitting ? 'Processing...' : `Place Order - ₹${total.toFixed(2)}`}
+              {isSubmitting ? 'Processing...' : `Place Order - ₹${toINR(total).toFixed(2)}`}
             </button>
           </div>
         </div>

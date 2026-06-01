@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { toINR } from '../services/productService';
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
@@ -33,7 +34,7 @@ const Cart = () => {
                   <div className="col">
                     <Link to={`/product/${item.id}`} className="text-decoration-none text-dark fw-medium">{item.title}</Link>
                     <p className="text-muted small text-capitalize mb-1">{item.category}</p>
-                    <p className="fw-semibold text-primary mb-0">₹{item.price.toFixed(2)}</p>
+                    <p className="fw-semibold text-primary mb-0">₹{toINR(item.price).toFixed(2)}</p>
                   </div>
 
                   <div className="col-auto">
@@ -45,7 +46,7 @@ const Cart = () => {
                   </div>
 
                   <div className="col-auto">
-                    <p className="fw-bold fs-5 mb-0">₹{(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="fw-bold fs-5 mb-0">₹{toINR(item.price * item.quantity).toFixed(2)}</p>
                   </div>
 
                   <div className="col-auto">
@@ -62,15 +63,15 @@ const Cart = () => {
             <h3 className="fs-5 pb-3 border-bottom mb-3">Order Summary</h3>
             <div className="d-flex justify-content-between mb-2">
               <span>Subtotal</span>
-              <span>₹{getCartTotal().toFixed(2)}</span>
+              <span>₹{toINR(getCartTotal()).toFixed(2)}</span>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>Shipping</span>
-              <span>{getCartTotal() > 50 ? 'Free' : '₹5.00'}</span>
+              <span>{getCartTotal() > 50 ? 'Free' : '₹500.00'}</span>
             </div>
             <div className="d-flex justify-content-between fs-5 fw-bold pt-3 border-top mt-2 mb-3">
               <span>Total</span>
-              <span>₹{(getCartTotal() + (getCartTotal() > 50 ? 0 : 5)).toFixed(2)}</span>
+              <span>₹{toINR(getCartTotal() + (getCartTotal() > 50 ? 0 : 5)).toFixed(2)}</span>
             </div>
 
             <Link to="/checkout" className="btn btn-success btn-lg w-100 fw-semibold mb-2">

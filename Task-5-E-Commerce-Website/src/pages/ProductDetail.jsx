@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Loading from '../components/Loading';
-import { fetchProductById } from '../services/productService';
+import { fetchProductById, toINR } from '../services/productService';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -73,7 +73,7 @@ const ProductDetail = () => {
             <span className="text-muted">{product.rating.rate} ({product.rating.count} reviews)</span>
           </div>
 
-          <p className="fs-2 fw-bold text-primary mb-3">₹{product.price.toFixed(2)}</p>
+          <p className="fs-2 fw-bold text-primary mb-3">₹{toINR(product.price).toFixed(2)}</p>
 
           <p className="text-muted lh-lg mb-4">{product.description}</p>
 

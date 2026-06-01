@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { toINR } from '../services/productService';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -35,7 +36,7 @@ const ProductCard = ({ product }) => {
             <span className="text-muted small ms-1">({product.rating.count})</span>
           </div>
           <div className="d-flex justify-content-between align-items-center mt-auto pt-2 border-top">
-            <span className="fs-5 fw-bold text-primary">₹{product.price.toFixed(2)}</span>
+            <span className="fs-5 fw-bold text-primary">₹{toINR(product.price).toFixed(2)}</span>
             <button className="btn btn-primary btn-sm" onClick={handleAddToCart}>Add to Cart</button>
           </div>
         </div>
