@@ -101,3 +101,4 @@ Uses the FakeStoreAPI (https://fakestoreapi.com) for:
 - Fetching product by ID
 - Fetching product categories
 - Fetching products by category
+

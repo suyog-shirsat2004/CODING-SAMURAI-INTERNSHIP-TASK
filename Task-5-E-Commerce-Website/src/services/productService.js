@@ -28,3 +28,4 @@ export const fetchProductsByCategory = (category) =>
   fetchWithRetry(`${API_BASE_URL}/products/category/${category}`);
 
 export const toINR = (usdPrice) => usdPrice * 200;
+
