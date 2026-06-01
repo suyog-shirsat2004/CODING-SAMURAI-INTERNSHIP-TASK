@@ -3,7 +3,7 @@
 ## Description
 A fully functional e-commerce website built with React featuring product listing, shopping cart functionality, and a complete checkout flow.
 
-🔗 **Live Demo:** [https://suyog-shirsat2004.github.io/](https://suyog-shirsat2004.github.io/)
+🔗 **Live Demo:** [https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/e-commerce/](https://suyog-shirsat2004.github.io/CODING-SAMURAI-INTERNSHIP-TASK/e-commerce/)
 
 ## Features
 - **Product Listing**: Browse products fetched from FakeStoreAPI with search, category filtering, and sorting options
