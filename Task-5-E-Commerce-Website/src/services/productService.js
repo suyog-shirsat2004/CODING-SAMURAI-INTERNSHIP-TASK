@@ -27,4 +27,4 @@ export const fetchCategories = () => fetchWithRetry(`${API_BASE_URL}/products/ca
 export const fetchProductsByCategory = (category) =>
   fetchWithRetry(`${API_BASE_URL}/products/category/${category}`);
 
-export const toINR = (usdPrice) => usdPrice * 100;
+export const toINR = (usdPrice) => usdPrice * 200;
