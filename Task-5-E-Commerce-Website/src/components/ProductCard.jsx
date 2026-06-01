@@ -2,8 +2,20 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { toINR } from '../services/productService';
 
+const bgColors = [
+  'bg-light',
+  'bg-info bg-opacity-10',
+  'bg-warning bg-opacity-10',
+  'bg-success bg-opacity-10',
+  'bg-danger bg-opacity-10',
+  'bg-primary bg-opacity-10',
+  'bg-secondary bg-opacity-10',
+  'bg-dark bg-opacity-10'
+];
+
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
+  const bgClass = bgColors[product.id % bgColors.length];
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -20,7 +32,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card shadow-sm h-100">
       <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
-        <div className="bg-light d-flex align-items-center justify-content-center p-4" style={{height: '200px'}}>
+        <div className={`${bgClass} d-flex align-items-center justify-content-center p-4`} style={{height: '200px'}}>
           <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '100%', objectFit: 'contain'}} />
         </div>
         <div className="card-body d-flex flex-column">

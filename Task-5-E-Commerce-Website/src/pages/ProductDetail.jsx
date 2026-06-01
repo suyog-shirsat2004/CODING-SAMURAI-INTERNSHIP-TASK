@@ -4,6 +4,17 @@ import { useCart } from '../context/CartContext';
 import Loading from '../components/Loading';
 import { fetchProductById, toINR } from '../services/productService';
 
+const detailBgColors = [
+  'bg-light',
+  'bg-info bg-opacity-10',
+  'bg-warning bg-opacity-10',
+  'bg-success bg-opacity-10',
+  'bg-danger bg-opacity-10',
+  'bg-primary bg-opacity-10',
+  'bg-secondary bg-opacity-10',
+  'bg-dark bg-opacity-10'
+];
+
 const ProductDetail = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
@@ -59,7 +70,7 @@ const ProductDetail = () => {
 
       <div className="row g-4 bg-light rounded-4 shadow-sm p-4">
         <div className="col-md-6">
-          <div className="bg-body-tertiary d-flex align-items-center justify-content-center p-4 rounded-3" style={{minHeight: '400px'}}>
+          <div className={`${detailBgColors[product.id % detailBgColors.length]} d-flex align-items-center justify-content-center p-4 rounded-3`} style={{minHeight: '400px'}}>
             <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '400px', objectFit: 'contain'}} />
           </div>
         </div>

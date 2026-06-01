@@ -2,6 +2,17 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { toINR } from '../services/productService';
 
+const cartBgColors = [
+  'bg-light',
+  'bg-info bg-opacity-10',
+  'bg-warning bg-opacity-10',
+  'bg-success bg-opacity-10',
+  'bg-danger bg-opacity-10',
+  'bg-primary bg-opacity-10',
+  'bg-secondary bg-opacity-10',
+  'bg-dark bg-opacity-10'
+];
+
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
 
@@ -26,7 +37,7 @@ const Cart = () => {
               <div key={item.id} className="card shadow-sm p-3">
                 <div className="row align-items-center g-3">
                   <div className="col-auto">
-                    <Link to={`/product/${item.id}`} className="d-block bg-body-tertiary rounded p-2" style={{width: '100px', height: '100px'}}>
+                    <Link to={`/product/${item.id}`} className={`d-block ${cartBgColors[item.id % cartBgColors.length]} rounded p-2`} style={{width: '100px', height: '100px'}}>
                       <img src={item.image} alt={item.title} className="w-100 h-100" style={{objectFit: 'contain'}} />
                     </Link>
                   </div>
