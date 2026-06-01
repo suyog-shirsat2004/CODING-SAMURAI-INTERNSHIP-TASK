@@ -79,7 +79,37 @@ jobs:
           cp -r ../Task-4-Todo-List/dist/* dist/todo-list/
           cp -r ../Task-5-E-Commerce-Website/dist/* dist/e-commerce/
           cp -r ../Task-6-Chat-Application/dist/* dist/chat-app/
+          cp dist/counter-app/index.html dist/counter-app/404.html
+          cp dist/weather-app/index.html dist/weather-app/404.html
+          cp dist/todo-list/index.html dist/todo-list/404.html
           cp dist/e-commerce/index.html dist/e-commerce/404.html
+          cp dist/chat-app/index.html dist/chat-app/404.html
+          cat > dist/404.html << 'EOF'
+          <!doctype html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Redirecting...</title>
+            <script>
+              (function() {
+                var base = '/CODING-SAMURAI-INTERNSHIP-TASK';
+                var path = window.location.pathname;
+                var apps = ['counter-app', 'weather-app', 'todo-list', 'e-commerce', 'chat-app'];
+                for (var i = 0; i < apps.length; i++) {
+                  if (path.startsWith(base + '/' + apps[i])) {
+                    sessionStorage.setItem('redirect', path);
+                    window.location.replace(base + '/' + apps[i] + '/');
+                    return;
+                  }
+                }
+                document.title = 'Page Not Found';
+                document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The page you requested does not exist.</p><a href="' + base + '/">Go to Home</a>';
+              })();
+            </script>
+          </head>
+          <body></body>
+          </html>
+          EOF
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
