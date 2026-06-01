@@ -57,3 +57,20 @@ a.text-primary:hover,
   color: var(--primary-hover) !important;
 }
 
+:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.card:focus-within {
+  box-shadow: var(--shadow-hover);
+}
+

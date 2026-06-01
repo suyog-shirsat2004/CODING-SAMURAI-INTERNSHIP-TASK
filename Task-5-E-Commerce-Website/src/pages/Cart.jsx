@@ -26,7 +26,7 @@ const Cart = () => {
               <div key={item.id} className="card shadow-sm p-3">
                 <div className="row align-items-center g-3">
                   <div className="col-auto">
-                    <Link to={`/product/${item.id}`} className="d-block bg-white rounded p-2" style={{width: '100px', height: '100px'}}>
+                    <Link to={`/product/${item.id}`} className="d-block bg-body-tertiary rounded p-2" style={{width: '100px', height: '100px'}}>
                       <img src={item.image} alt={item.title} className="w-100 h-100" style={{objectFit: 'contain'}} />
                     </Link>
                   </div>

@@ -57,9 +57,9 @@ const ProductDetail = () => {
     <div className="mx-auto" style={{maxWidth: '1000px'}}>
       <Link to="/products" className="text-primary text-decoration-none fw-medium d-inline-block mb-3">← Back to Products</Link>
 
-      <div className="row g-4 bg-white rounded-4 shadow-sm p-4">
+      <div className="row g-4 bg-light rounded-4 shadow-sm p-4">
         <div className="col-md-6">
-          <div className="bg-white d-flex align-items-center justify-content-center p-4 rounded-3" style={{minHeight: '400px'}}>
+          <div className="bg-body-tertiary d-flex align-items-center justify-content-center p-4 rounded-3" style={{minHeight: '400px'}}>
             <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '400px', objectFit: 'contain'}} />
           </div>
         </div>
