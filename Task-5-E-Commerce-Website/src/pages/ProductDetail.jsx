@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Loading from '../components/Loading';
@@ -12,19 +12,20 @@ const ProductDetail = () => {
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
-    const loadProduct = async () => {
-      try {
-        const data = await fetchProductById(id);
-        setProduct(data);
-      } catch (err) {
-        setError('Failed to load product');
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadProduct();
+  const loadProduct = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await fetchProductById(id);
+      setProduct(data);
+    } catch (err) {
+      setError('Failed to load product. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   }, [id]);
+
+  useEffect(() => { loadProduct(); }, [loadProduct]);
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
@@ -39,7 +40,17 @@ const ProductDetail = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <div className="alert alert-danger text-center">{error}</div>;
+
+  if (error) {
+    return (
+      <div className="text-center py-5">
+        <div className="alert alert-danger d-inline-block">{error}</div>
+        <br />
+        <button className="btn btn-primary mt-3" onClick={loadProduct}>Retry</button>
+      </div>
+    );
+  }
+
   if (!product) return <div className="alert alert-danger text-center">Product not found</div>;
 
   return (

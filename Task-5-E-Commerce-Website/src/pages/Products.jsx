@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ProductCard from '../components/ProductCard';
 import Loading from '../components/Loading';
 import { fetchProducts, fetchCategories } from '../services/productService';
@@ -12,23 +12,24 @@ const Products = () => {
   const [sortBy, setSortBy] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const [productsData, categoriesData] = await Promise.all([
-          fetchProducts(),
-          fetchCategories()
-        ]);
-        setProducts(productsData);
-        setCategories(categoriesData);
-      } catch (err) {
-        setError('Failed to load products');
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadData();
+  const loadData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [productsData, categoriesData] = await Promise.all([
+        fetchProducts(),
+        fetchCategories()
+      ]);
+      setProducts(productsData);
+      setCategories(categoriesData);
+    } catch (err) {
+      setError('Failed to load products. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => { loadData(); }, [loadData]);
 
   const getFilteredProducts = () => {
     let filtered = [...products];
@@ -61,7 +62,16 @@ const Products = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <div className="alert alert-danger text-center">{error}</div>;
+
+  if (error) {
+    return (
+      <div className="text-center py-5">
+        <div className="alert alert-danger d-inline-block">{error}</div>
+        <br />
+        <button className="btn btn-primary mt-3" onClick={loadData}>Retry</button>
+      </div>
+    );
+  }
 
   const filteredProducts = getFilteredProducts();
 

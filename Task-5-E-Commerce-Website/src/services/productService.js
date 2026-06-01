@@ -1,57 +1,28 @@
 const API_BASE_URL = 'https://fakestoreapi.com';
+const MAX_RETRIES = 2;
 
-export const fetchProducts = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/products`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch products');
+async function fetchWithRetry(url, retries = MAX_RETRIES) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeout);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.json();
+    } catch (error) {
+      clearTimeout();
+      if (i === retries) throw error;
+      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    throw error;
   }
-};
+}
 
-export const fetchProductById = async (id) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/products/${id}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch product');
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching product:', error);
-    throw error;
-  }
-};
+export const fetchProducts = () => fetchWithRetry(`${API_BASE_URL}/products`);
 
-export const fetchCategories = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/products/categories`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch categories');
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching categories:', error);
-    throw error;
-  }
-};
+export const fetchProductById = (id) => fetchWithRetry(`${API_BASE_URL}/products/${id}`);
 
-export const fetchProductsByCategory = async (category) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/products/category/${category}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch products by category');
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching products by category:', error);
-    throw error;
-  }
-};
+export const fetchCategories = () => fetchWithRetry(`${API_BASE_URL}/products/categories`);
+
+export const fetchProductsByCategory = (category) =>
+  fetchWithRetry(`${API_BASE_URL}/products/category/${category}`);

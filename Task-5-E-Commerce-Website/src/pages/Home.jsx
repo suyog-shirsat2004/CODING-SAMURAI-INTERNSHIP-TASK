@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import Loading from '../components/Loading';
@@ -9,22 +9,32 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const data = await fetchProducts();
-        setProducts(data.slice(0, 8));
-      } catch (err) {
-        setError('Failed to load products');
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadProducts();
+  const loadProducts = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await fetchProducts();
+      setProducts(data.slice(0, 8));
+    } catch (err) {
+      setError('Failed to load products. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
+  useEffect(() => { loadProducts(); }, [loadProducts]);
+
   if (loading) return <Loading />;
-  if (error) return <div className="alert alert-danger text-center">{error}</div>;
+
+  if (error) {
+    return (
+      <div className="text-center py-5">
+        <div className="alert alert-danger d-inline-block">{error}</div>
+        <br />
+        <button className="btn btn-primary mt-3" onClick={loadProducts}>Retry</button>
+      </div>
+    );
+  }
 
   return (
     <div>
