@@ -1,24 +1,25 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import '../styles/Navbar.css';
 
 const Navbar = () => {
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <h1>ShopMart</h1>
-        </Link>
-        <div className="navbar-menu">
-          <Link to="/" className="navbar-link">Home</Link>
-          <Link to="/products" className="navbar-link">Products</Link>
-          <Link to="/cart" className="navbar-link cart-link">
+    <nav className="navbar navbar-expand navbar-light bg-white shadow-sm sticky-top">
+      <div className="container">
+        <Link to="/" className="navbar-brand fw-bold text-primary fs-4">ShopMart</Link>
+        <div className="navbar-nav ms-auto align-items-center gap-2">
+          <NavLink to="/" className="nav-link" end>Home</NavLink>
+          <NavLink to="/products" className="nav-link">Products</NavLink>
+          <NavLink to="/cart" className="nav-link position-relative">
             Cart
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </Link>
+            {cartCount > 0 && (
+              <span className="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle" style={{fontSize: '0.65rem'}}>
+                {cartCount}
+              </span>
+            )}
+          </NavLink>
         </div>
       </div>
     </nav>

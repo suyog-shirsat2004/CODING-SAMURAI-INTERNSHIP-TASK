@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import '../styles/ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -18,23 +17,26 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card">
-      <Link to={`/product/${product.id}`} className="product-link">
-        <div className="product-image">
-          <img src={product.image} alt={product.title} />
+    <div className="card shadow-sm h-100">
+      <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
+        <div className="bg-white d-flex align-items-center justify-content-center p-4" style={{height: '200px'}}>
+          <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '100%', objectFit: 'contain'}} />
         </div>
-        <div className="product-info">
-          <h3 className="product-title">{product.title}</h3>
-          <p className="product-category">{product.category}</p>
-          <div className="product-rating">
-            <span className="rating-stars">{'★'.repeat(Math.round(product.rating.rate))}</span>
-            <span className="rating-count">({product.rating.count})</span>
+        <div className="card-body d-flex flex-column">
+          <h3 className="card-title fs-6 fw-normal" style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
+          }}>{product.title}</h3>
+          <p className="text-muted small text-capitalize mb-2">{product.category}</p>
+          <div className="mb-2">
+            <span className="text-warning">{'★'.repeat(Math.round(product.rating.rate))}</span>
+            <span className="text-muted small ms-1">({product.rating.count})</span>
           </div>
-          <div className="product-footer">
-            <span className="product-price">₹{product.price.toFixed(2)}</span>
-            <button className="add-to-cart-btn" onClick={handleAddToCart}>
-              Add to Cart
-            </button>
+          <div className="d-flex justify-content-between align-items-center mt-auto pt-2 border-top">
+            <span className="fs-5 fw-bold text-primary">₹{product.price.toFixed(2)}</span>
+            <button className="btn btn-primary btn-sm" onClick={handleAddToCart}>Add to Cart</button>
           </div>
         </div>
       </Link>

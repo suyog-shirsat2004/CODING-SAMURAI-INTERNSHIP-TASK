@@ -14,9 +14,9 @@ function App() {
   return (
     <CartProvider>
       <Router basename={import.meta.env.BASE_URL}>
-        <div className="app">
+        <div className="d-flex flex-column min-vh-100">
           <Navbar />
-          <main>
+          <main className="flex-grow-1 container py-4">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import Loading from '../components/Loading';
 import { fetchProducts } from '../services/productService';
-import '../styles/Home.css';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -25,40 +24,56 @@ const Home = () => {
   }, []);
 
   if (loading) return <Loading />;
-  if (error) return <div className="error">{error}</div>;
+  if (error) return <div className="alert alert-danger text-center">{error}</div>;
 
   return (
-    <div className="home">
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Welcome to ShopMart</h1>
-          <p>Discover amazing products at unbeatable prices</p>
-          <Link to="/products" className="cta-button">Shop Now</Link>
+    <div>
+      <section className="bg-primary bg-gradient text-white text-center p-5 rounded-4 mb-5">
+        <div className="py-4">
+          <h1 className="display-4 fw-bold">Welcome to ShopMart</h1>
+          <p className="fs-5 opacity-75 mb-4">Discover amazing products at unbeatable prices</p>
+          <Link to="/products" className="btn btn-light btn-lg text-primary fw-semibold px-4">Shop Now</Link>
         </div>
       </section>
 
-      <section className="featured-products">
-        <h2>Featured Products</h2>
-        <div className="product-grid">
+      <section className="mb-5">
+        <h2 className="text-center fs-1 mb-4">Featured Products</h2>
+        <div className="row g-4">
           {products.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <div key={product.id} className="col-12 col-sm-6 col-lg-3">
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
-        <Link to="/products" className="view-all-btn">View All Products</Link>
+        <div className="text-center mt-4">
+          <Link to="/products" className="btn btn-primary px-4">View All Products</Link>
+        </div>
       </section>
 
-      <section className="features">
-        <div className="feature-card">
-          <h3>🚚 Free Shipping</h3>
-          <p>On orders over ₹50</p>
+      <section className="row g-4 mt-4">
+        <div className="col-md-4">
+          <div className="card shadow-sm text-center h-100 p-4">
+            <div className="card-body">
+              <h3 className="h5">🚚 Free Shipping</h3>
+              <p className="card-text text-muted">On orders over ₹50</p>
+            </div>
+          </div>
         </div>
-        <div className="feature-card">
-          <h3>🔒 Secure Payment</h3>
-          <p>100% secure checkout</p>
+        <div className="col-md-4">
+          <div className="card shadow-sm text-center h-100 p-4">
+            <div className="card-body">
+              <h3 className="h5">🔒 Secure Payment</h3>
+              <p className="card-text text-muted">100% secure checkout</p>
+            </div>
+          </div>
         </div>
-        <div className="feature-card">
-          <h3>↩️ Easy Returns</h3>
-          <p>30-day return policy</p>
+        <div className="col-md-4">
+          <div className="card shadow-sm text-center h-100 p-4">
+            <div className="card-body">
+              <h3 className="h5">↩️ Easy Returns</h3>
+              <p className="card-text text-muted">30-day return policy</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import Loading from '../components/Loading';
 import { fetchProducts, fetchCategories } from '../services/productService';
-import '../styles/Products.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -62,27 +61,29 @@ const Products = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <div className="error">{error}</div>;
+  if (error) return <div className="alert alert-danger text-center">{error}</div>;
 
   const filteredProducts = getFilteredProducts();
 
   return (
-    <div className="products-page">
-      <h1>All Products</h1>
+    <div>
+      <h1 className="fs-1 text-center mb-4">All Products</h1>
 
-      <div className="filters">
-        <div className="search-bar">
+      <div className="d-flex flex-wrap gap-3 mb-4 p-3 bg-white rounded-3 shadow-sm">
+        <div className="flex-fill" style={{minWidth: '200px'}}>
           <input
             type="text"
+            className="form-control"
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
 
-        <div className="category-filter">
-          <label>Category:</label>
+        <div className="d-flex align-items-center gap-2">
+          <label className="fw-medium text-nowrap">Category:</label>
           <select
+            className="form-select"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -93,9 +94,10 @@ const Products = () => {
           </select>
         </div>
 
-        <div className="sort-filter">
-          <label>Sort By:</label>
+        <div className="d-flex align-items-center gap-2">
+          <label className="fw-medium text-nowrap">Sort By:</label>
           <select
+            className="form-select"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
@@ -107,16 +109,18 @@ const Products = () => {
         </div>
       </div>
 
-      <p className="results-count">{filteredProducts.length} products found</p>
+      <p className="text-muted mb-3">{filteredProducts.length} products found</p>
 
-      <div className="product-grid">
+      <div className="row g-4">
         {filteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <div key={product.id} className="col-12 col-sm-6 col-lg-3">
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
 
       {filteredProducts.length === 0 && (
-        <p className="no-results">No products found matching your criteria.</p>
+        <p className="text-center text-muted py-5 fs-5">No products found matching your criteria.</p>
       )}
     </div>
   );
