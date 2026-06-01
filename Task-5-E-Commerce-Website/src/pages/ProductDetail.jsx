@@ -65,7 +65,7 @@ const ProductDetail = () => {
   if (!product) return <div className="alert alert-danger text-center">Product not found</div>;
 
   return (
-    <div className="mx-auto" style={{maxWidth: '1000px'}}>
+    <div className="mx-auto animate-page" style={{maxWidth: '1000px'}}>
       <Link to="/products" className="text-primary text-decoration-none fw-medium d-inline-block mb-3">← Back to Products</Link>
 
       <div className="row g-4 bg-light rounded-4 shadow-sm p-4">

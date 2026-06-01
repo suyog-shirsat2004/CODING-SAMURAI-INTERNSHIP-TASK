@@ -37,7 +37,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className="animate-page">
       <section className="bg-primary bg-gradient text-white text-center p-5 rounded-4 mb-5">
         <div className="py-4">
           <h1 className="display-4 fw-bold">Welcome to ShopMart</h1>

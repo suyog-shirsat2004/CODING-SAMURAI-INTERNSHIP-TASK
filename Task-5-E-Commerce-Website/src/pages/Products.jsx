@@ -76,7 +76,7 @@ const Products = () => {
   const filteredProducts = getFilteredProducts();
 
   return (
-    <div>
+    <div className="animate-page">
       <h1 className="fs-1 text-center mb-4">All Products</h1>
 
       <div className="d-flex flex-wrap gap-3 mb-4 p-3 bg-light rounded-3 shadow-sm">

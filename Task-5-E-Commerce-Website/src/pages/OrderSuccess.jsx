@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const OrderSuccess = () => {
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{minHeight: '60vh'}}>
+    <div className="d-flex justify-content-center align-items-center animate-page" style={{minHeight: '60vh'}}>
       <div className="card shadow-sm p-5 text-center" style={{maxWidth: '500px'}}>
         <div className="bg-success text-white d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4" style={{width: '80px', height: '80px', fontSize: '3rem'}}>✓</div>
         <h1 className="fs-3 text-success mb-3">Order Placed Successfully!</h1>

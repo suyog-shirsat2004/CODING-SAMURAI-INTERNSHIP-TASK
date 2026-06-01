@@ -6,9 +6,9 @@ const Navbar = () => {
   const cartCount = getCartCount();
 
   return (
-    <nav className="navbar navbar-expand navbar-dark bg-dark shadow-sm sticky-top">
+    <nav className="navbar navbar-expand navbar-light shadow-sm sticky-top">
       <div className="container">
-        <Link to="/" className="navbar-brand fw-bold fs-4">ShopMart</Link>
+        <Link to="/" className="navbar-brand fs-4">ShopMart</Link>
         <div className="navbar-nav ms-auto align-items-center gap-2">
           <NavLink to="/" className="nav-link" end>Home</NavLink>
           <NavLink to="/products" className="nav-link">Products</NavLink>

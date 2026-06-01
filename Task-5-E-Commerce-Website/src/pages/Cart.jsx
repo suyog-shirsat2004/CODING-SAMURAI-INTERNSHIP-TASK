@@ -27,7 +27,7 @@ const Cart = () => {
   }
 
   return (
-    <div>
+    <div className="animate-page">
       <h2 className="fs-1 mb-4">Shopping Cart</h2>
 
       <div className="row g-4">

@@ -130,7 +130,7 @@ const Checkout = () => {
   const shippingINR = shipping === 0 ? 0 : 500;
 
   return (
-    <div className="mx-auto" style={{maxWidth: '1200px'}}>
+    <div className="mx-auto animate-page" style={{maxWidth: '1200px'}}>
       <h2 className="fs-1 text-center mb-4">Checkout</h2>
 
       <form onSubmit={handleSubmit} className="row g-4">
