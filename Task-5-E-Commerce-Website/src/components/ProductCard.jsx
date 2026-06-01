@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card shadow-sm h-100">
       <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
-        <div className="bg-white d-flex align-items-center justify-content-center p-4" style={{height: '200px'}}>
+        <div className="bg-light d-flex align-items-center justify-content-center p-4" style={{height: '200px'}}>
           <img src={product.image} alt={product.title} className="img-fluid" style={{maxHeight: '100%', objectFit: 'contain'}} />
         </div>
         <div className="card-body d-flex flex-column">
